@@ -1,0 +1,13 @@
+#!/bin/sh
+j=$(( $(tput cols) * 3 / 4 ))
+case $1 in
+	-ask)
+		echo "Entre caminho da base:"
+		read -r caminho
+		< "$caminho" medbase "${2:-}" | wrapeador "$j" 5
+
+;;
+	*)
+		< /mnt/biblioteca/medbase/base1.medb medbase "$@" | wrapeador $j 0
+;;
+esac
